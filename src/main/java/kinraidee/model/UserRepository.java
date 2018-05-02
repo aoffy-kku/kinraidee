@@ -51,4 +51,11 @@ public class UserRepository {
 		entityManager.remove(user);
 	}
 
+	@Transactional
+	public User signin(String username, String password) {
+		Query nativeQuery = entityManager.createNativeQuery("select * from user WHERE username = '" 
+				+ username + "' AND " + " password = '" + password + "'", User.class);
+		return (User) nativeQuery.getSingleResult();
+	}
+	
 }

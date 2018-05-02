@@ -40,15 +40,19 @@ public class UserController {
 	}
 
 	// update new information of user
-	@PutMapping("/user/{userId}")
-	public User updateUser(@PathVariable Integer userId, @RequestBody User user) {
-		User newUser = UserRepository.update(userId, user);
+	@PutMapping("/user/{id}")
+	public User updateUser(@PathVariable Integer id, @RequestBody User user) {
+		User newUser = UserRepository.update(id, user);
 		return newUser;
 	}
 
-	@DeleteMapping("/user/{userid}")
-	public void deleteUser(@PathVariable Integer userId) {
-		UserRepository.delete(userId);
+	@DeleteMapping("/user/{id}")
+	public void deleteUser(@PathVariable Integer id) {
+		UserRepository.delete(id);
 	}
 
+	@PostMapping("/user/signin")
+	public User signin(@RequestBody User user) {
+		return UserRepository.signin(user.getUsername(), user.getPassword());
+	}
 }
