@@ -35,22 +35,22 @@ public class CommentController {
 	
 	//search by comment_id
 		@PutMapping("/comment/{id}")
-		public Comment getCommentById(@PathVariable Integer commentId) {
-			Comment comment = commentRepository.findById(commentId);
+		public Comment getCommentById(@PathVariable Integer id) {
+			Comment comment = commentRepository.findById(id);
 			return comment;
 		}
 	
 	//update comment
 	@PutMapping("/comment/{id}")
-	public Comment updateComment(@PathVariable Integer commentId, @RequestBody Comment comment) {
-		Comment newComment = commentRepository.update(commentId, comment);
+	public Comment updateComment(@PathVariable Integer id, @RequestBody Comment comment) {
+		Comment newComment = commentRepository.update(id, comment);
 		return newComment;
 	}
 	
 	//delete comment
 	@DeleteMapping("/comment/{id}")
-	public void deleteComment(@PathVariable Integer commentId) {
-		commentRepository.delete(commentId);
+	public void deleteComment(@PathVariable Integer id) {
+		commentRepository.delete(id);
 	}
 	
 	

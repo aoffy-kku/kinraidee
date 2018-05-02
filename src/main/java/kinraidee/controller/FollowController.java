@@ -34,15 +34,15 @@ public class FollowController {
 	
 	//search by follow_id
 	@PutMapping("/follow/{id}")
-	public Follow getFollowById(@PathVariable Integer followId) {
-		Follow follow = followRepository.findById(followId);
+	public Follow getFollowById(@PathVariable Integer id) {
+		Follow follow = followRepository.findById(id);
 		return follow;
 	}
 	
 	//delete follow
 	@DeleteMapping("/follow/{id}")
-	public void deleteFollow(@PathVariable Integer followId) {
-		followRepository.delete(followId);
+	public void deleteFollow(@PathVariable Integer id) {
+		followRepository.delete(id);
 	}
 	
 }

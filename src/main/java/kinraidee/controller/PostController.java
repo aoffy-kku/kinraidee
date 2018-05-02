@@ -36,22 +36,22 @@ public class PostController {
 	
 	//search by post_id
 	@PutMapping("/post/{id}")
-	public Post getPostById(@PathVariable Integer postId) {
-		Post post = postRepository.findById(postId);
+	public Post getPostById(@PathVariable Integer id) {
+		Post post = postRepository.findById(id);
 		return post;
 	}
 	
 	//update post
 	@PutMapping("/post/{id}")
-	public Post updatePost(@PathVariable Integer postId, @RequestBody Post post) {
-		Post newPost = postRepository.update(postId, post);
+	public Post updatePost(@PathVariable Integer id, @RequestBody Post post) {
+		Post newPost = postRepository.update(id, post);
 		return newPost;
 	}
 	
 	//delete post
 	@DeleteMapping("/post/{id}")
-	public void deletePost(@PathVariable Integer postId) {
-		postRepository.delete(postId);
+	public void deletePost(@PathVariable Integer id) {
+		postRepository.delete(id);
 	}
 			
 }
