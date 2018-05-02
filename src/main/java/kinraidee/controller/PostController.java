@@ -35,7 +35,7 @@ public class PostController {
 	}
 	
 	//search by post_id
-	@PutMapping("/post/{id}")
+	@GetMapping("/post/{id}")
 	public Post getPostById(@PathVariable Integer id) {
 		Post post = postRepository.findById(id);
 		return post;

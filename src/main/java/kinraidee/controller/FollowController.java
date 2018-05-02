@@ -33,7 +33,7 @@ public class FollowController {
 	}
 	
 	//search by follow_id
-	@PutMapping("/follow/{id}")
+	@GetMapping("/follow/{id}")
 	public Follow getFollowById(@PathVariable Integer id) {
 		Follow follow = followRepository.findById(id);
 		return follow;

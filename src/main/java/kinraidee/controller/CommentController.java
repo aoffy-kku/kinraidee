@@ -34,11 +34,11 @@ public class CommentController {
 	}
 	
 	//search by comment_id
-		@PutMapping("/comment/{id}")
-		public Comment getCommentById(@PathVariable Integer id) {
-			Comment comment = commentRepository.findById(id);
-			return comment;
-		}
+	@GetMapping("/comment/{id}")
+	public Comment getCommentById(@PathVariable Integer id) {
+		Comment comment = commentRepository.findById(id);
+		return comment;
+	}
 	
 	//update comment
 	@PutMapping("/comment/{id}")
