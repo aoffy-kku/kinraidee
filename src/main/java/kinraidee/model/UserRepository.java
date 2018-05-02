@@ -24,7 +24,7 @@ public class UserRepository {
 	public User findById(Integer user_id) {
 		return entityManager.find(User.class, user_id);
 	}
-	
+
 	@Transactional
 	public User insert(User user) {
 		entityManager.persist(user);
@@ -53,9 +53,10 @@ public class UserRepository {
 
 	@Transactional
 	public User signin(String username, String password) {
-		Query nativeQuery = entityManager.createNativeQuery("select * from user WHERE username = '" 
-				+ username + "' AND " + " password = '" + password + "'", User.class);
+		Query nativeQuery = entityManager.createNativeQuery(
+				"select * from user WHERE username = '" + username + "' AND " + " password = '" + password + "'",
+				User.class);
 		return (User) nativeQuery.getSingleResult();
 	}
-	
+
 }

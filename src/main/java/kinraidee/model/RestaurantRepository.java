@@ -55,6 +55,5 @@ public class RestaurantRepository {
 		Restaurant restaurant = entityManager.find(Restaurant.class, resId);
 		entityManager.remove(restaurant);
 	}
-	
-	
+
 }

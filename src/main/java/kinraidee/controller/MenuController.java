@@ -20,7 +20,7 @@ import kinraidee.model.RestaurantRepository;
 public class MenuController {
 	@Autowired
 	private MenuRepository menuRepository;
-	
+
 	@GetMapping("/menu") // show all menu
 	public List<Menu> getMenuList() {
 		List<Menu> menuList = menuRepository.findAllMenu();
@@ -43,7 +43,7 @@ public class MenuController {
 		Menu newMenu = menuRepository.updateMenu(id, menu);
 		return newMenu;
 	}
-	
+
 	@DeleteMapping("/menu/{id}") // delete menu
 	public void deleteMenu(@PathVariable Integer id) {
 		menuRepository.deleteMenu(id);

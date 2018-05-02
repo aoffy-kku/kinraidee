@@ -19,39 +19,38 @@ import kinraidee.model.Follow;
 public class CommentController {
 	@Autowired
 	private CommentRepository commentRepository;
-	
-	//insert comment
+
+	// insert comment
 	@PostMapping("/comment")
 	public Comment createComment(@RequestBody Comment comment) {
 		return commentRepository.insert(comment);
 	}
-	
-	//Show all comment
+
+	// Show all comment
 	@GetMapping("/comment")
-	public List<Comment> getCommentList(){
+	public List<Comment> getCommentList() {
 		List<Comment> commentList = commentRepository.findAll();
 		return commentList;
 	}
-	
-	//search by comment_id
+
+	// search by comment_id
 	@GetMapping("/comment/{id}")
 	public Comment getCommentById(@PathVariable Integer id) {
 		Comment comment = commentRepository.findById(id);
 		return comment;
 	}
-	
-	//update comment
+
+	// update comment
 	@PutMapping("/comment/{id}")
 	public Comment updateComment(@PathVariable Integer id, @RequestBody Comment comment) {
 		Comment newComment = commentRepository.update(id, comment);
 		return newComment;
 	}
-	
-	//delete comment
+
+	// delete comment
 	@DeleteMapping("/comment/{id}")
 	public void deleteComment(@PathVariable Integer id) {
 		commentRepository.delete(id);
 	}
-	
-	
+
 }

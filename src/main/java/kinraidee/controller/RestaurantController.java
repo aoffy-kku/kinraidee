@@ -41,7 +41,7 @@ public class RestaurantController {
 		Restaurant newRestaurant = restaurantRepository.updateRestaurant(id, restaurant);
 		return newRestaurant;
 	}
-	
+
 	@DeleteMapping("/restaurant/{id}") // delete restaurant
 	public void deleteRestaurant(@PathVariable Integer id) {
 		restaurantRepository.deleteRestaurant(id);

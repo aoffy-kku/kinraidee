@@ -20,38 +20,38 @@ import kinraidee.model.PostRepository;
 public class PostController {
 	@Autowired
 	private PostRepository postRepository;
-	
-	//insert post
+
+	// insert post
 	@PostMapping("/post")
 	public Post createPost(@RequestBody Post post) {
 		return postRepository.insert(post);
 	}
-	
-	//Show all post
+
+	// Show all post
 	@GetMapping("/post")
-	public List<Post> getPostList(){
+	public List<Post> getPostList() {
 		List<Post> postList = postRepository.findAll();
 		return postList;
 	}
-	
-	//search by post_id
+
+	// search by post_id
 	@GetMapping("/post/{id}")
 	public Post getPostById(@PathVariable Integer id) {
 		Post post = postRepository.findById(id);
 		return post;
 	}
-	
-	//update post
+
+	// update post
 	@PutMapping("/post/{id}")
 	public Post updatePost(@PathVariable Integer id, @RequestBody Post post) {
 		Post newPost = postRepository.update(id, post);
 		return newPost;
 	}
-	
-	//delete post
+
+	// delete post
 	@DeleteMapping("/post/{id}")
 	public void deletePost(@PathVariable Integer id) {
 		postRepository.delete(id);
 	}
-			
+
 }
