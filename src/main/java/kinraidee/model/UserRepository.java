@@ -53,15 +53,10 @@ public class UserRepository {
 
 	@Transactional
 	public User signin(String username, String password) {
-		try {
-			Query nativeQuery = entityManager.createNativeQuery(
-					"select * from user WHERE username = '" + username + "' AND " + " password = '" + password + "'",
-					User.class);
-			return (User) nativeQuery.getSingleResult();
-		}catch(Exception e){
-			return null;
-		}
-
+		Query nativeQuery = entityManager.createNativeQuery(
+				"select * from user WHERE username = '" + username + "' AND " + " password = '" + password + "'",
+				User.class);
+		return (User) nativeQuery.getSingleResult();
 	}
 
 }
