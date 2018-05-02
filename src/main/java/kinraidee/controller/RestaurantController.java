@@ -32,38 +32,19 @@ public class RestaurantController {
 		return restaurantRepository.insertRestaurant(restaurant);
 	}
 
-	@GetMapping("/restaurant/{resId}") // search restaurant by id
+	@GetMapping("/restaurant/{id}") // search restaurant by id
 	public Restaurant getRestaurantById(@PathVariable Integer resId) {
 		Restaurant restaurant = restaurantRepository.findRestaurantById(resId);
 		return restaurant;
 	}
 
-	@PutMapping("/restaurant/{resId}") // update restaurant information
-	public Restaurant updateRestaurant(@PathVariable Integer resId,@RequestBody Restaurant restaurant) {
-		Restaurant oldRestaurant = restaurantRepository.findRestaurantById(resId);	
-		oldRestaurant.setResId(restaurant.getResId());
-		oldRestaurant.setUserId(restaurant.getUserId());
-		oldRestaurant.setRestaurantName(restaurant.getRestaurantName());
-		oldRestaurant.setDescription(restaurant.getDescription());
-		oldRestaurant.setType(restaurant.getDescription());
-		oldRestaurant.setVegan(restaurant.isVegan());
-		oldRestaurant.setWifi(restaurant.isWifi());
-		oldRestaurant.setPlug(restaurant.isPlug());
-		oldRestaurant.setAir(restaurant.isAir());
-		oldRestaurant.setMotorcycle(restaurant.isMotorcycle());
-		oldRestaurant.setCar(restaurant.isCar());
-		oldRestaurant.setOpen(restaurant.isOpen());	
-		oldRestaurant.setLat(restaurant.getLat());
-		oldRestaurant.setLng(restaurant.getLng());
-		oldRestaurant.setLogo(restaurant.getLogo());
-		oldRestaurant.setCover(restaurant.getCover());
-		oldRestaurant.setCreateAt(restaurant.getCreateAt());
-		oldRestaurant.setUpdateAt(restaurant.getUpdateAt());
-		Restaurant newRestaurant = restaurantRepository.insertRestaurant(oldRestaurant);
+	@PutMapping("/restaurant/{id}") // update restaurant information
+	public Restaurant updateRestaurant(@PathVariable Integer resId, @RequestBody Restaurant restaurant) {
+		Restaurant newRestaurant = restaurantRepository.updateRestaurant(resId, restaurant);
 		return newRestaurant;
 	}
 	
-	@DeleteMapping("/restaurant/{resId}")
+	@DeleteMapping("/restaurant/{id}") // delete restaurant
 	public void deleteRestaurant(@PathVariable Integer resId) {
 		restaurantRepository.deleteRestaurant(resId);
 	}
