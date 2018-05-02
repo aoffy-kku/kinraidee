@@ -33,19 +33,19 @@ public class RestaurantController {
 	}
 
 	@GetMapping("/restaurant/{id}") // search restaurant by id
-	public Restaurant getRestaurantById(@PathVariable Integer resId) {
-		Restaurant restaurant = restaurantRepository.findRestaurantById(resId);
+	public Restaurant getRestaurantById(@PathVariable Integer id) {
+		Restaurant restaurant = restaurantRepository.findRestaurantById(id);
 		return restaurant;
 	}
 
 	@PutMapping("/restaurant/{id}") // update restaurant information
-	public Restaurant updateRestaurant(@PathVariable Integer resId, @RequestBody Restaurant restaurant) {
-		Restaurant newRestaurant = restaurantRepository.updateRestaurant(resId, restaurant);
+	public Restaurant updateRestaurant(@PathVariable Integer id, @RequestBody Restaurant restaurant) {
+		Restaurant newRestaurant = restaurantRepository.updateRestaurant(id, restaurant);
 		return newRestaurant;
 	}
 	
 	@DeleteMapping("/restaurant/{id}") // delete restaurant
-	public void deleteRestaurant(@PathVariable Integer resId) {
-		restaurantRepository.deleteRestaurant(resId);
+	public void deleteRestaurant(@PathVariable Integer id) {
+		restaurantRepository.deleteRestaurant(id);
 	}
 }

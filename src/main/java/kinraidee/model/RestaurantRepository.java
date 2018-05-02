@@ -1,4 +1,5 @@
 package kinraidee.model;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,17 +20,16 @@ public class RestaurantRepository {
 	public Restaurant findRestaurantById(Integer resId) {
 		return entityManager.find(Restaurant.class, resId);
 	}
-	
+
 	@Transactional
 	public Restaurant insertRestaurant(Restaurant restaurant) {
 		entityManager.persist(restaurant);
 		return restaurant;
 	}
+
 	@Transactional
 	public Restaurant updateRestaurant(Integer resId, Restaurant restaurant) {
-		Restaurant oldRestaurant = entityManager.find(Restaurant.class, resId);	
-		oldRestaurant.setResId(restaurant.getResId());
-		oldRestaurant.setUserId(restaurant.getUserId());
+		Restaurant oldRestaurant = entityManager.find(Restaurant.class, resId);
 		oldRestaurant.setRestaurantName(restaurant.getRestaurantName());
 		oldRestaurant.setDescription(restaurant.getDescription());
 		oldRestaurant.setType(restaurant.getDescription());
@@ -39,7 +39,7 @@ public class RestaurantRepository {
 		oldRestaurant.setAir(restaurant.isAir());
 		oldRestaurant.setMotorcycle(restaurant.isMotorcycle());
 		oldRestaurant.setCar(restaurant.isCar());
-		oldRestaurant.setOpen(restaurant.isOpen());	
+		oldRestaurant.setOpen(restaurant.isOpen());
 		oldRestaurant.setLat(restaurant.getLat());
 		oldRestaurant.setLng(restaurant.getLng());
 		oldRestaurant.setLogo(restaurant.getLogo());
@@ -47,12 +47,12 @@ public class RestaurantRepository {
 		oldRestaurant.setCreateAt(restaurant.getCreateAt());
 		oldRestaurant.setUpdateAt(restaurant.getUpdateAt());
 		entityManager.persist(restaurant);
-	return restaurant;
+		return restaurant;
 	}
-	
+
 	@Transactional
 	public void deleteRestaurant(Integer resId) {
-	Restaurant restaurant = entityManager.find(Restaurant.class, resId);
-	entityManager.remove(restaurant);
+		Restaurant restaurant = entityManager.find(Restaurant.class, resId);
+		entityManager.remove(restaurant);
 	}
 }
