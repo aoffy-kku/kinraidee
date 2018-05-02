@@ -42,7 +42,7 @@ public class UserRepository {
 		oldUser.setPassword(user.getPassword());
 		oldUser.setUpdateAt(ts);
 		entityManager.persist(oldUser);
-		return user;
+		return oldUser;
 	}
 
 	@Transactional
