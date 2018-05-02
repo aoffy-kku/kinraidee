@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kinraidee.model.Comment;
 import kinraidee.model.CommentRepository;
+import kinraidee.model.Follow;
 
 @RestController
 public class CommentController {
@@ -20,10 +21,10 @@ public class CommentController {
 	private CommentRepository commentRepository;
 	
 	//insert comment
-		@PostMapping("/comment")
-		public Comment createComment(@RequestBody Comment comment) {
-			return commentRepository.insert(comment);
-		}
+	@PostMapping("/comment")
+	public Comment createComment(@RequestBody Comment comment) {
+		return commentRepository.insert(comment);
+	}
 	
 	//Show all comment
 	@GetMapping("/comment")
@@ -33,16 +34,23 @@ public class CommentController {
 	}
 	
 	//search by comment_id
-	@PutMapping("/comment/{comment_id}")
-	public Comment updateComment(@PathVariable Integer comment_id, @RequestBody Comment comment) {
-		Comment newComment = commentRepository.update(comment_id, comment);
+		@PutMapping("/comment/{id}")
+		public Comment getCommentById(@PathVariable Integer commentId) {
+			Comment comment = commentRepository.findById(commentId);
+			return comment;
+		}
+	
+	//update comment
+	@PutMapping("/comment/{id}")
+	public Comment updateComment(@PathVariable Integer commentId, @RequestBody Comment comment) {
+		Comment newComment = commentRepository.update(commentId, comment);
 		return newComment;
 	}
 	
 	//delete comment
-	@DeleteMapping("/comment/{comment_id}")
-	public void deleteComment(@PathVariable Integer comment_id) {
-		commentRepository.delete(comment_id);
+	@DeleteMapping("/comment/{id}")
+	public void deleteComment(@PathVariable Integer commentId) {
+		commentRepository.delete(commentId);
 	}
 	
 	

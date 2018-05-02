@@ -10,30 +10,29 @@ import javax.persistence.Id;
 public class Comment {
 	@Id
 	@GeneratedValue
-	private Integer comment_id;
-	private Integer user_id;
-	private Integer res_id;
+	private Integer commentId;
+	private Integer userId;
+	private Integer resId;
 	private String detail;
-	private Timestamp create_at;
-	private Timestamp update_at;
-	
-	public Integer getComment_id() {
-		return comment_id;
+	private Timestamp createAt;
+	private Timestamp updateAt;
+	public Integer getCommentId() {
+		return commentId;
 	}
-	public void setComment_id(Integer comment_id) {
-		this.comment_id = comment_id;
+	public void setCommentId(Integer commentId) {
+		this.commentId = commentId;
 	}
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public Integer getRes_id() {
-		return res_id;
+	public Integer getResId() {
+		return resId;
 	}
-	public void setRes_id(Integer res_id) {
-		this.res_id = res_id;
+	public void setResId(Integer resId) {
+		this.resId = resId;
 	}
 	public String getDetail() {
 		return detail;
@@ -41,18 +40,17 @@ public class Comment {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public Timestamp getCreate_at() {
-		return create_at;
+	public Timestamp getCreateAt() {
+		return createAt;
 	}
-	public void setCreate_at(Timestamp create_at) {
-		this.create_at = create_at;
+	public void setCreateAt(Timestamp createAt) {
+		this.createAt = createAt;
 	}
-	public Timestamp getUpdate_at() {
-		return update_at;
+	public Timestamp getUpdateAt() {
+		return updateAt;
 	}
-	public void setUpdate_at(Timestamp update_at) {
-		this.update_at = update_at;
+	public void setUpdateAt(Timestamp updateAt) {
+		this.updateAt = updateAt;
 	}
-	
 	
 }

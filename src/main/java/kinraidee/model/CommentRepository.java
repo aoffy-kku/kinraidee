@@ -21,8 +21,8 @@ public class CommentRepository {
 		return query.getResultList();
 	}
 	
-	public Comment findById(Integer comment_id) {
-		return entityManager.find(Comment.class, comment_id);
+	public Comment findById(Integer commentId) {
+		return entityManager.find(Comment.class, commentId);
 	}
 	
 	@Transactional
@@ -32,19 +32,19 @@ public class CommentRepository {
 	}
 	
 	@Transactional
-	public Comment update(Integer comment_id, Comment comment) {
+	public Comment update(Integer commentId, Comment comment) {
 		Date date = new Date();
 		Timestamp ts = new Timestamp(date.getTime());
-		Comment oldComment = entityManager.find(Comment.class, comment_id);
+		Comment oldComment = entityManager.find(Comment.class, commentId);
 		oldComment.setDetail(comment.getDetail());
-		oldComment.setUpdate_at(ts);
+		oldComment.setUpdateAt(ts);
 		entityManager.persist(oldComment);
 		return comment;
 	}
 	
 	@Transactional
-	public void delete(Integer comment_id) {
-		Comment comment = entityManager.find(Comment.class, comment_id);
+	public void delete(Integer commentId) {
+		Comment comment = entityManager.find(Comment.class, commentId);
 		entityManager.remove(comment);
 	}
 }
