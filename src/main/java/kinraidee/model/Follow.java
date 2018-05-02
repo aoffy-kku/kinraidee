@@ -15,36 +15,45 @@ public class Follow {
 	private Integer userId;
 	private Timestamp createAt;
 	private Timestamp updateAt;
+
 	public Integer getFollowId() {
 		return followId;
 	}
+
 	public void setFollowId(Integer followId) {
 		this.followId = followId;
 	}
+
 	public Integer getResId() {
 		return resId;
 	}
+
 	public void setResId(Integer resId) {
 		this.resId = resId;
 	}
+
 	public Integer getUserId() {
 		return userId;
 	}
+
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
 	public Timestamp getCreateAt() {
 		return createAt;
 	}
+
 	public void setCreateAt(Timestamp createAt) {
 		this.createAt = createAt;
 	}
+
 	public Timestamp getUpdateAt() {
 		return updateAt;
 	}
+
 	public void setUpdateAt(Timestamp updateAt) {
 		this.updateAt = updateAt;
 	}
-	
 
 }

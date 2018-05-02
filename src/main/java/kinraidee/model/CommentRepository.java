@@ -15,22 +15,22 @@ import org.springframework.stereotype.Repository;
 public class CommentRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	public List<Comment> findAll(){
+
+	public List<Comment> findAll() {
 		Query query = entityManager.createQuery("from Comment");
 		return query.getResultList();
 	}
-	
+
 	public Comment findById(Integer commentId) {
 		return entityManager.find(Comment.class, commentId);
 	}
-	
+
 	@Transactional
 	public Comment insert(Comment comment) {
 		entityManager.persist(comment);
 		return comment;
 	}
-	
+
 	@Transactional
 	public Comment update(Integer commentId, Comment comment) {
 		Date date = new Date();
@@ -41,7 +41,7 @@ public class CommentRepository {
 		entityManager.persist(oldComment);
 		return comment;
 	}
-	
+
 	@Transactional
 	public void delete(Integer commentId) {
 		Comment comment = entityManager.find(Comment.class, commentId);

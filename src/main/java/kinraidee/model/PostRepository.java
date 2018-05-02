@@ -15,22 +15,22 @@ import org.springframework.stereotype.Repository;
 public class PostRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	public List<Post> findAll(){
+
+	public List<Post> findAll() {
 		Query query = entityManager.createQuery("from Post");
 		return query.getResultList();
 	}
-	
+
 	public Post findById(Integer postId) {
 		return entityManager.find(Post.class, postId);
 	}
-	
+
 	@Transactional
 	public Post insert(Post post) {
 		entityManager.persist(post);
 		return post;
 	}
-	
+
 	@Transactional
 	public Post update(Integer postId, Post post) {
 		Date date = new Date();
@@ -43,7 +43,7 @@ public class PostRepository {
 		entityManager.persist(oldPost);
 		return post;
 	}
-	
+
 	@Transactional
 	public void delete(Integer postId) {
 		Post post = entityManager.find(Post.class, postId);

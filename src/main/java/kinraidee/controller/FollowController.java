@@ -18,31 +18,31 @@ import kinraidee.model.FollowRepository;
 public class FollowController {
 	@Autowired
 	private FollowRepository followRepository;
-	
-	//insert follow
+
+	// insert follow
 	@PostMapping("/follow")
 	public Follow createFollow(@RequestBody Follow follow) {
 		return followRepository.insert(follow);
 	}
-	
-	//show all follow
+
+	// show all follow
 	@GetMapping("/follow")
-	public List<Follow> getFollowList(){
+	public List<Follow> getFollowList() {
 		List<Follow> followList = followRepository.findAll();
 		return followList;
 	}
-	
-	//search by follow_id
+
+	// search by follow_id
 	@GetMapping("/follow/{id}")
 	public Follow getFollowById(@PathVariable Integer id) {
 		Follow follow = followRepository.findById(id);
 		return follow;
 	}
-	
-	//delete follow
+
+	// delete follow
 	@DeleteMapping("/follow/{id}")
 	public void deleteFollow(@PathVariable Integer id) {
 		followRepository.delete(id);
 	}
-	
+
 }

@@ -1,4 +1,5 @@
 package kinraidee.model;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,22 +12,22 @@ import org.springframework.stereotype.Repository;
 public class MenuRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	public List<Menu> findAllMenu() {
 		Query query = entityManager.createQuery("from Menu");
 		return query.getResultList();
 	}
-	
+
 	public Menu findMenuById(Integer menuId) {
 		return entityManager.find(Menu.class, menuId);
 	}
-	
+
 	@Transactional
 	public Menu insertMenu(Menu menu) {
 		entityManager.persist(menu);
 		return menu;
 	}
-	
+
 	@Transactional
 	public Menu updateMenu(Integer menuId, Menu menu) {
 		Menu oldMenu = entityManager.find(Menu.class, menuId);
@@ -40,10 +41,10 @@ public class MenuRepository {
 		entityManager.persist(menu);
 		return menu;
 	}
-	
+
 	@Transactional
 	public void deleteMenu(Integer menuId) {
-		Menu menu  = entityManager.find(Menu.class, menuId);
+		Menu menu = entityManager.find(Menu.class, menuId);
 		entityManager.remove(menu);
 	}
 }
