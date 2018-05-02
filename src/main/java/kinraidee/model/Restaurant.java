@@ -1,10 +1,14 @@
-package Model;
+package kinraidee.model;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Restaurant {
+	@Id
+	@GeneratedValue
 	private int resId;
 	private int userId;
 	private String restaurantName;

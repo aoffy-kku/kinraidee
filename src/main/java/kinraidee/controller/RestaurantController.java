@@ -1,4 +1,4 @@
-package Controller;
+package kinraidee.controller;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import Model.Comment;
-import Model.Restaurant;
-import Model.RestaurantRepository;
-import Model.User;
+import kinraidee.model.User;
+import kinraidee.model.Comment;
+import kinraidee.model.Restaurant;
+import kinraidee.model.RestaurantRepository;
 
 @RestController
 public class RestaurantController {

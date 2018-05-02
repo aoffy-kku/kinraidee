@@ -1,4 +1,4 @@
-package Controller;
+package kinraidee.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import Model.Comment;
-import Model.CommentRepository;
+import kinraidee.model.Comment;
+import kinraidee.model.CommentRepository;
 
 @RestController
 public class CommentController {

@@ -1,11 +1,15 @@
-package Model;
+package kinraidee.model;
 
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Comment {
+	@Id
+	@GeneratedValue
 	private Integer comment_id;
 	private Integer user_id;
 	private Integer res_id;
