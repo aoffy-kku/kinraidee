@@ -9,5 +9,3 @@ buildNumber.properties
 .mvn/timing.properties
 /.metadata/
 .classpath
-
-src/main/resources/application\.properties
