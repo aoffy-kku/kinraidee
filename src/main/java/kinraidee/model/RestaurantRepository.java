@@ -22,7 +22,7 @@ public class RestaurantRepository {
 	}
 
 	@Transactional
-	public Restaurant insertRestaurant(Restaurant restaurant) {
+	public Restaurant insert(Restaurant restaurant) {
 		entityManager.persist(restaurant);
 		return restaurant;
 	}
@@ -30,7 +30,7 @@ public class RestaurantRepository {
 	@Transactional
 	public Restaurant updateRestaurant(Integer resId, Restaurant restaurant) {
 		Restaurant oldRestaurant = entityManager.find(Restaurant.class, resId);
-		oldRestaurant.setRestaurantName(restaurant.getRestaurantName());
+		oldRestaurant.setName(restaurant.getName());
 		oldRestaurant.setDescription(restaurant.getDescription());
 		oldRestaurant.setType(restaurant.getDescription());
 		oldRestaurant.setVegan(restaurant.isVegan());
@@ -55,4 +55,6 @@ public class RestaurantRepository {
 		Restaurant restaurant = entityManager.find(Restaurant.class, resId);
 		entityManager.remove(restaurant);
 	}
+	
+	
 }

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import kinraidee.model.User;
-import kinraidee.model.Comment;
 import kinraidee.model.Restaurant;
 import kinraidee.model.RestaurantRepository;
 
@@ -29,7 +27,7 @@ public class RestaurantController {
 
 	@PostMapping("/restaurant") // insertRestaurant
 	public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-		return restaurantRepository.insertRestaurant(restaurant);
+		return restaurantRepository.insert(restaurant);
 	}
 
 	@GetMapping("/restaurant/{id}") // search restaurant by id
