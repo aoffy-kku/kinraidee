@@ -33,15 +33,8 @@ public class FollowController {
 		List<Follow> followList = followRepository.findAll();
 		return followList;
 	}
-
-	// search by follow_id
-	@GetMapping("/follow/{id}")
-	public Follow getFollowById(@PathVariable Integer id) {
-		Follow follow = followRepository.findById(id);
-		return follow;
-	}
 	
-	@PostMapping("/follow/{id}")
+	@GetMapping("/follow/{id}")
 	public List<Follow> getUserByResId(@PathVariable Integer id) {
 		List<Follow> follow = (List<Follow>) followRepository.findByResId(id);
 		return follow;

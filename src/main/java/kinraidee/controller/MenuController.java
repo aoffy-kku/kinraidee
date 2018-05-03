@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kinraidee.model.Follow;
 import kinraidee.model.Menu;
 import kinraidee.model.MenuRepository;
 import kinraidee.model.Restaurant;
@@ -34,9 +35,15 @@ public class MenuController {
 		return menuRepository.insertMenu(menu);
 	}
 
+//	@GetMapping("/menu/{id}") // search menu by id
+//	public Menu getMenuById(@PathVariable Integer id) {
+//		Menu menu = menuRepository.findMenuById(id);
+//		return menu;
+//	}
+	
 	@GetMapping("/menu/{id}") // search menu by id
-	public Menu getMenuById(@PathVariable Integer id) {
-		Menu menu = menuRepository.findMenuById(id);
+	public List<Menu> getMenuByResId(@PathVariable Integer id) {
+		List<Menu> menu = (List<Menu>) menuRepository.findMenuByResId(id);
 		return menu;
 	}
 

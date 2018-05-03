@@ -22,6 +22,12 @@ public class MenuRepository {
 		return entityManager.find(Menu.class, menuId);
 	}
 
+	public List<Menu> findMenuByResId(Integer resId) {
+		Query nativeQuery = entityManager.createNativeQuery(
+				"select * from menu WHERE res_id = '" + resId+"'" ,Menu.class);
+		return nativeQuery.getResultList();
+	}
+	
 	@Transactional
 	public Menu insertMenu(Menu menu) {
 		entityManager.persist(menu);
