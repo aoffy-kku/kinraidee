@@ -3,6 +3,7 @@ package kinraidee.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kinraidee.model.Follow;
 import kinraidee.model.FollowRepository;
 
+@CrossOrigin(origins = "*" ,maxAge = 3600)
 @RestController
 public class FollowController {
 	@Autowired
@@ -36,6 +38,12 @@ public class FollowController {
 	@GetMapping("/follow/{id}")
 	public Follow getFollowById(@PathVariable Integer id) {
 		Follow follow = followRepository.findById(id);
+		return follow;
+	}
+	
+	@PostMapping("/follow/{id}")
+	public List<Follow> getUserByResId(@PathVariable Integer id) {
+		List<Follow> follow = (List<Follow>) followRepository.findByResId(id);
 		return follow;
 	}
 

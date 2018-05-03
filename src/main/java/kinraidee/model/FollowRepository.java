@@ -36,4 +36,12 @@ public class FollowRepository {
 		Follow follow = entityManager.find(Follow.class, followId);
 		entityManager.remove(follow);
 	}
+	
+	@Transactional
+	public List<Follow> findByResId(Integer id) {
+		Query nativeQuery = entityManager.createNativeQuery(
+				"select * from follow WHERE res_id = '" + id+"'" ,Follow.class);
+		return nativeQuery.getResultList();
+	}
+
 }
