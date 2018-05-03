@@ -1,5 +1,7 @@
 package kinraidee.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kinraidee.model.Follow;
 import kinraidee.model.Restaurant;
 import kinraidee.model.RestaurantRepository;
 
@@ -38,6 +41,14 @@ public class RestaurantController {
 		Restaurant restaurant = restaurantRepository.findRestaurantById(id);
 		return restaurant;
 	}
+
+	
+	@GetMapping("/restaurant/name/{resname}")
+	public List<Restaurant> getUserByResId(@PathVariable String resname) throws UnsupportedEncodingException  {
+		List<Restaurant> res = (List<Restaurant>) restaurantRepository.findByResName(resname);
+		return res;
+	}
+
 
 	@PutMapping("/restaurant/{id}") // update restaurant information
 	public Restaurant updateRestaurant(@PathVariable Integer id, @RequestBody Restaurant restaurant) {

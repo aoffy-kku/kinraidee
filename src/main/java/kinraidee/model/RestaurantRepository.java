@@ -1,5 +1,7 @@
 package kinraidee.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -57,6 +59,14 @@ public class RestaurantRepository {
 	public void deleteRestaurant(Integer resId) {
 		Restaurant restaurant = entityManager.find(Restaurant.class, resId);
 		entityManager.remove(restaurant);
+	}
+	
+	
+	public List<Restaurant> findByResName(String resname) throws UnsupportedEncodingException {
+		Query nativeQuery = entityManager.createNativeQuery(
+				"select * from restaurant WHERE name LIKE '%"+resname+"%'" ,Restaurant.class);
+		return nativeQuery.getResultList();
+
 	}
 
 }

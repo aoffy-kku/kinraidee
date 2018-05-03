@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kinraidee.model.User;
 import kinraidee.model.UserRepository;
+
 @CrossOrigin(origins = "*" ,maxAge = 3600)
 @RestController
 public class UserController {
