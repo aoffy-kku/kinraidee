@@ -2,7 +2,9 @@ package kinraidee.model;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -52,11 +54,23 @@ public class UserRepository {
 	}
 
 	@Transactional
-	public User signin(String username, String password) {
+	public Map<String, Object> signin(String username, String password) {
+		Map map = new HashMap();
 		Query nativeQuery = entityManager.createNativeQuery(
 				"select * from user WHERE username = '" + username + "' AND " + " password = '" + password + "'",
 				User.class);
-		return (User) nativeQuery.getSingleResult();
+		User user = (User) nativeQuery.getSingleResult();
+		map.put("user", user);
+		try {
+			nativeQuery = entityManager.createNativeQuery(
+					"select * from restaurant WHERE user_id = '" + user.getUserId() + "'",
+					Restaurant.class);
+			Restaurant restaurant = (Restaurant) nativeQuery.getSingleResult();
+			map.put("restaurant", restaurant);
+		} catch(Exception e) {
+			map.put("restaurant", null);
+		}
+		return map;
 	}
 
 }

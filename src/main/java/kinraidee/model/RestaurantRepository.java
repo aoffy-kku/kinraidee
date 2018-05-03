@@ -1,5 +1,7 @@
 package kinraidee.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,6 +31,8 @@ public class RestaurantRepository {
 
 	@Transactional
 	public Restaurant updateRestaurant(Integer resId, Restaurant restaurant) {
+		Date date = new Date();
+		Timestamp ts = new Timestamp(date.getTime());
 		Restaurant oldRestaurant = entityManager.find(Restaurant.class, resId);
 		oldRestaurant.setName(restaurant.getName());
 		oldRestaurant.setDescription(restaurant.getDescription());
@@ -44,10 +48,9 @@ public class RestaurantRepository {
 		oldRestaurant.setLng(restaurant.getLng());
 		oldRestaurant.setLogo(restaurant.getLogo());
 		oldRestaurant.setCover(restaurant.getCover());
-		oldRestaurant.setCreateAt(restaurant.getCreateAt());
-		oldRestaurant.setUpdateAt(restaurant.getUpdateAt());
-		entityManager.persist(restaurant);
-		return restaurant;
+		oldRestaurant.setUpdateAt(ts);
+		entityManager.persist(oldRestaurant);
+		return oldRestaurant;
 	}
 
 	@Transactional

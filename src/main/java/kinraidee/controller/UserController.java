@@ -1,6 +1,7 @@
 package kinraidee.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -55,7 +56,7 @@ public class UserController {
 	}
 
 	@PostMapping("/user/signin")
-	public User signin(@RequestBody User user) {
+	public Map<String, Object> signin(@RequestBody User user) {
 		return UserRepository.signin(user.getUsername(), user.getPassword());
 	}
 }
