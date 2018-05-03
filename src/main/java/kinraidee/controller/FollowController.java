@@ -39,6 +39,12 @@ public class FollowController {
 		List<Follow> follow = (List<Follow>) followRepository.findByResId(id);
 		return follow;
 	}
+	
+	@GetMapping("/follow/{userid}/{resid}")
+	public boolean getUserByResId(@PathVariable Integer userid, @PathVariable Integer resid) {
+		boolean value =  followRepository.checkFollower(userid,resid);
+		return value;
+	}
 
 	// delete follow
 	@DeleteMapping("/follow/{id}")

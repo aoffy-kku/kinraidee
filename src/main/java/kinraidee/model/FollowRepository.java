@@ -42,5 +42,20 @@ public class FollowRepository {
 				"select * from follow WHERE res_id = '" + id+"'" ,Follow.class);
 		return nativeQuery.getResultList();
 	}
+	
+	public boolean checkFollower(Integer userid,Integer resid) {
+		try {
+			Query nativeQuery = entityManager.createNativeQuery(
+					"select * from follow WHERE user_id = " + userid +" AND res_id = " + resid ,Follow.class);
+			if( nativeQuery.getSingleResult() != null ) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch(Exception e) {
+			return false;
+		}
+
+	}
 
 }
