@@ -62,11 +62,15 @@ public class RestaurantRepository {
 	}
 	
 	
-	public List<Restaurant> findByResName(String resname) throws UnsupportedEncodingException {
+	public List<Restaurant> findByResName(String resname) {
 		Query nativeQuery = entityManager.createNativeQuery(
 				"select * from restaurant WHERE name LIKE '%"+resname+"%'" ,Restaurant.class);
 		return nativeQuery.getResultList();
-
 	}
-
+	
+	public List<Restaurant> findTopFive() {
+		Query nativeQuery = entityManager.createNativeQuery(
+				"SELECT restaurant.* FROM restaurant, (SELECT res_id, COUNT(*) AS follower FROM follow GROUP BY res_id ORDER BY follower DESC) AS t WHERE restaurant.res_id = t.res_id ORDER BY t.follower DESC" ,Restaurant.class);
+		return nativeQuery.getResultList();
+	}
 }

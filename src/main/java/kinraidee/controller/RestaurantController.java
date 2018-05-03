@@ -49,6 +49,11 @@ public class RestaurantController {
 		return res;
 	}
 
+	@GetMapping("/restaurant/topfive")
+	public List<Restaurant> getTopFive() {
+		List<Restaurant> res = (List<Restaurant>) restaurantRepository.findTopFive();
+		return res;
+	}
 
 	@PutMapping("/restaurant/{id}") // update restaurant information
 	public Restaurant updateRestaurant(@PathVariable Integer id, @RequestBody Restaurant restaurant) {
